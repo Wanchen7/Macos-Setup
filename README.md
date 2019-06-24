@@ -1,5 +1,5 @@
 # Macos-Setup
-自用！！！初始化mac的开发环境(Android、Flutter)
+自用！！！初始化mac的开发环境(Android、Flutter)
 
 # 第一步
  去https://github.com/shadowsocks/ShadowsocksX-NG/releases 准备好梯子
