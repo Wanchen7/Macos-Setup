@@ -1,14 +1,7 @@
 #!/Library/Frameworks/Python.framework/Versions/2.7/bin/python
 # -*- coding: utf-8 -*-
 
-import getpass
 import os
-import json
-import urllib2
-import subprocess
-
-name = getpass.getuser()
-
 
 # 检查 Xcode Command Line Tools 
 if os.system('xcode-select -p') != 0:
@@ -40,25 +33,17 @@ os.system('git lfs install')
 
 # 安装 第三方库
 print "安装 第三方库"
-os.system('brew install expect curl wget sqlite libpng libxml2 openssl unzip')
+os.system('brew install expect curl wget sqlite libpng libxml2 openssl unzip apktool dex2jar gradle')
 
 # 安装 字体
 print "安装 字体"
 os.system('brew cask install font-dosis font-droid-sans-mono-for-powerline font-open-sans font-open-sans-condensed font-roboto font-roboto-mono font-roboto-condensed font-roboto-slab font-consolas-for-powerline font-dejavu-sans font-dejavu-sans-mono-for-powerline font-inconsolata font-inconsolata-for-powerline font-lato font-menlo-for-powerline font-meslo-lg font-meslo-for-powerline font-noto-sans font-noto-serif font-source-sans-pro font-source-serif-pro font-ubuntu font-pt-mono font-pt-sans font-pt-serif font-fira-mono font-fira-mono-for-powerline font-fira-code font-fira-sans font-source-code-pro')
 
-
-# 安装 ZSH
-print "安装 ZSH"
-os.system('brew install zsh zsh-completions zsh-syntax-highlighting zsh-autosuggestions')
-os.system('sed -i -e \'s/robbyrussell/agnoster/g\' ~/.zshrc &> /dev/null')
-os.system('echo "DEFAULT_USER=\`whoami\`" >> ~/.zshrc')
-os.system('echo "source ~/.bash_profile" >> ~/.zshrc')
-os.system('source ~/.zshrc')
-
+#系统设置
+os.system('defaults write com.apple.finder AppleShowAllFiles -bool true')
 
 # 安装 Android+Java环境
 print "安装 Android+Java环境"
-os.system('brew install gradle')
 show_notification("请输入密码")
 os.system('brew cask install java8')
 os.system('brew cask install android-studio')
@@ -69,9 +54,17 @@ print "安装 Flutter环境"
 os.system('cd ~/Documents && git clone -b master https://github.com/flutter/flutter.git && cd ~')
 
 # 安装 Quicklook
-print "安装 Quicklook Helpers"
+print "安装 Quicklook"
 os.system('brew cask install qlcolorcode qlmarkdown quicklook-csv quicklook-json webpquicklook suspicious-package epubquicklook qlstephen qlprettypatch font-hack qlvideo')
 
+# 安装 Vim
+print "安装 vim"
+os.system('brew install vim --with-override-system-vi')
+os.system('git clone https://github.com/amix/vimrc.git ~/.vim_runtime')
+os.system('sh ~/.vim_runtime/install_awesome_vimrc.sh')
 
+# 安装 App
+print "安装 app"
+os.system('brew cask install iterm3 wechat google-chrome sourcetree sublime-text wireshark qq macdown charles alfred postman android-file-transfer jd-gui karabiner-elements diffmerge')
 
 
